@@ -3,12 +3,21 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
+<<<<<<< HEAD
+title: 葡京's Blog
+subtitle: ''
+description: ''
+keywords:
+author: 葡京
+language: zh-CN
+=======
 title: Hexo
 subtitle: ''
 description: ''
 keywords:
 author: John Doe
 language: en
+>>>>>>> 5e00c288f05e59209552391fc74028bd6a273786
 timezone: ''
 
 # URL
@@ -43,14 +52,23 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+<<<<<<< HEAD
+highlight:
+  enable: true
+=======
 syntax_highlighter: highlight.js
 highlight:
+>>>>>>> 5e00c288f05e59209552391fc74028bd6a273786
   line_number: true
   auto_detect: false
   tab_replace: ''
   wrap: true
   hljs: false
 prismjs:
+<<<<<<< HEAD
+  enable: false
+=======
+>>>>>>> 5e00c288f05e59209552391fc74028bd6a273786
   preprocess: true
   line_number: true
   tab_replace: ''
@@ -96,15 +114,24 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
+<<<<<<< HEAD
+theme: Chic
+=======
 theme: leedom
+>>>>>>> 5e00c288f05e59209552391fc74028bd6a273786
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
+<<<<<<< HEAD
+  repo: git@github.com:eiennidiana/eiennidiana.github.io.git
+  branch: main
+=======
   repository: https://github.com/eiennidiana/eiennidiana.github.io.git
   branch: main
 search:
   path: search.xml
   field: post
   content: true
+>>>>>>> 5e00c288f05e59209552391fc74028bd6a273786
