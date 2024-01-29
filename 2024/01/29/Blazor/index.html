@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="葡京">
+
+
+
+
+
+<title>Blazor | 葡京&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/image/jyn.jpg">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">葡京&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">葡京&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Blazor</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">葡京</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">一月 29, 2024&nbsp;&nbsp;21:33:33</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Blazor"><a href="#Blazor" class="headerlink" title="Blazor"></a>Blazor</h1><h2 id="Blazor-Web-开发简介"><a href="#Blazor-Web-开发简介" class="headerlink" title="Blazor Web 开发简介"></a>Blazor Web 开发简介</h2><h3 id="什么是Blazor"><a href="#什么是Blazor" class="headerlink" title="什么是Blazor"></a>什么是Blazor</h3><p>​		Blazor是.NET用户界面框架</p>
+<h4 id="什么是-NET"><a href="#什么是-NET" class="headerlink" title="什么是  .NET"></a>什么是  .NET</h4><p>​			一个完整的生态系统</p>
+<h5 id="什么是Razor"><a href="#什么是Razor" class="headerlink" title="什么是Razor"></a>什么是Razor</h5><p>​			一种格式，具有cshtml和razor拓展名，C#和HTML混合</p>
+<h2 id="生产Web应用"><a href="#生产Web应用" class="headerlink" title="生产Web应用"></a>生产Web应用</h2><h3 id="创建Blazor项目"><a href="#创建Blazor项目" class="headerlink" title="创建Blazor项目"></a>创建Blazor项目</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dotnet new blazor 项目名 //Blazor Web</span><br><span class="line">dotnet new blazorwasm  项目名 //Blazor WebAssembly</span><br></pre></td></tr></table></figure>
+
+<h3 id="Razor-组件"><a href="#Razor-组件" class="headerlink" title="Razor 组件"></a>Razor 组件</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;Current count: @currentCount&lt;/p&gt;</span><br><span class="line">&lt;button @onclick=<span class="string">&quot;IncrementCount&quot;</span>&gt;Click me&lt;/button&gt;</span><br><span class="line">@code &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">int</span> currentCount = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">IncrementCount</span>()</span>&#123;currentCount++;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据绑定和事件"><a href="#数据绑定和事件" class="headerlink" title="数据绑定和事件"></a>数据绑定和事件</h3><h4 id="代码指令"><a href="#代码指令" class="headerlink" title="代码指令"></a>代码指令</h4><p>​		使用 <code>@()</code> 添加与 HTML 内联的 C# 语句。 如需要更多代码，使用 <code>@code</code>{} 添加多个语句</p>
+<p>​		还可将 <code>@functions</code> 部分添加到方法和属性的模板。 它们将添加到生成的类顶部，文档可在其中引用它们</p>
+<h4 id="Page-指令"><a href="#Page-指令" class="headerlink" title="Page 指令"></a>Page 指令</h4><p>​		<code>@page</code> </p>
+<h2 id="样式绑定"><a href="#样式绑定" class="headerlink" title="样式绑定"></a>样式绑定</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;style <span class="keyword">scoped</span>&gt;</span><br><span class="line">    .active1 &#123; width:<span class="number">80</span>px; height:<span class="number">80</span>px;&#125;</span><br><span class="line">    .active2 &#123; background-color:<span class="meta">#ff6a00;&#125;</span></span><br><span class="line">&lt;/style&gt;</span><br><span class="line">绑定单个css</span><br><span class="line">&lt;div style=<span class="string">&quot;font-size:@(fontsize)px&quot;</span>&gt;文字&lt;/div&gt; </span><br><span class="line">绑定多个css</span><br><span class="line">&lt;div style=<span class="string">&quot;@style.ToString()&quot;</span>&gt;文字&lt;/div&gt; </span><br><span class="line">绑定多个<span class="keyword">class</span></span><br><span class="line">&lt;<span class="title">div</span> <span class="title">class</span>=&quot;@<span class="title">getClass</span>()&quot;&gt;文字&lt;/<span class="title">div</span>&gt;</span><br><span class="line">@<span class="title">code</span> &#123;</span><br><span class="line">    绑定单个css</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> fontsize =<span class="number">30</span>;</span><br><span class="line">    绑定多个css</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Style</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">int</span> height &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">int</span> width &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; = <span class="number">100</span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">string</span> <span class="title">ToString</span>()</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">$&quot;width:<span class="subst">&#123;width&#125;</span>px;height:<span class="subst">&#123;height&#125;</span>px;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Style style = <span class="keyword">new</span> Style();</span><br><span class="line">    绑定多个<span class="keyword">class</span></span><br><span class="line">    <span class="title">public</span> <span class="title">string</span>[] <span class="title">classArray</span> = <span class="keyword">new</span> <span class="built_in">string</span>[] &#123; <span class="string">&quot;active1&quot;</span>, <span class="string">&quot;active2&quot;</span> &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">getClass</span>()</span>&#123;<span class="keyword">return</span> <span class="built_in">string</span>.Join(<span class="string">&quot; &quot;</span>, classArray);&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p>@page “url路径”</p>
+<p>App.razor</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;Routes /&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="路由参数"><a href="#路由参数" class="headerlink" title="路由参数"></a>路由参数</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@page <span class="string">&quot;/Route/&#123;keyword&#125;&quot;</span></span><br><span class="line">@code &#123;</span><br><span class="line">    [<span class="meta">Parameter</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> keyword &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnInitialized</span>()</span>&#123;Console.WriteLine(<span class="string">&quot;keyword=&quot;</span> + keyword);&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="路由约束"><a href="#路由约束" class="headerlink" title="路由约束"></a>路由约束</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@page <span class="string">&quot;/Route/&#123;keyword:int&#125;&quot;</span></span><br><span class="line">@code &#123;</span><br><span class="line">    [<span class="meta">Parameter</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> keyword &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnInitialized</span>()</span>&#123;Console.WriteLine(<span class="string">&quot;keyword=&quot;</span> + keyword);&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查询字符"><a href="#查询字符" class="headerlink" title="查询字符"></a>查询字符</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@page <span class="string">&quot;/querystring&quot;</span></span><br><span class="line">@using Microsoft.AspNetCore.WebUtilities</span><br><span class="line">@inject NavigationManager NavigationManager</span><br><span class="line">&lt;h3&gt;查询字符串&lt;/h3&gt;</span><br><span class="line">&lt;p&gt;keyword Value: @keyword&lt;/p&gt;</span><br><span class="line">&lt;p&gt;state Value: @state&lt;/p&gt;</span><br><span class="line">@code &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> keyword = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> state = <span class="string">&quot;0&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnInitialized</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> query = <span class="keyword">new</span> Uri(NavigationManager.Uri).Query;</span><br><span class="line"> </span><br><span class="line">        Console.WriteLine(<span class="string">&quot;query=&quot;</span> + query);</span><br><span class="line">        <span class="keyword">if</span> (QueryHelpers.ParseQuery(query).TryGetValue(<span class="string">&quot;keyword&quot;</span>, <span class="keyword">out</span> <span class="keyword">var</span> keyword))</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;keyword=&quot;</span> + keyword);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (QueryHelpers.ParseQuery(query).TryGetValue(<span class="string">&quot;state&quot;</span>, <span class="keyword">out</span> <span class="keyword">var</span> state))</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;state=&quot;</span> + state);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="类-NavLink组件"><a href="#类-NavLink组件" class="headerlink" title="类 NavLink组件"></a>类<route-link> NavLink组件</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NavLink和a标签</span><br><span class="line">&lt;NavLink href=<span class="string">&quot;http://www.baidu.com&quot;</span>&gt;链接到外部地址&lt;/NavLink&gt;</span><br><span class="line">&lt;NavLink href=<span class="string">&quot;/querystring?keyword=abc&amp;state=1&quot;</span>&gt;连接到站内地址&lt;/NavLink&gt;</span><br><span class="line">&lt;NavLink href=<span class="string">&quot;/navlinkanda&quot;</span> Match=<span class="string">&quot;NavLinkMatch.Prefix&quot;</span>&gt;匹配前缀&lt;/NavLink&gt;</span><br><span class="line">&lt;NavLink href=<span class="string">&quot;/navlinkanda?k=123&quot;</span> Match=<span class="string">&quot;NavLinkMatch.All&quot;</span>&gt;匹配全部&lt;/NavLink&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Blazor生命周期"><a href="#Blazor生命周期" class="headerlink" title="Blazor生命周期"></a>Blazor生命周期</h2><ul>
+<li>设置参数时 (<code>SetParametersAsync</code>)</li>
+<li>组件初始化 (<code>OnInitialized&#123;Async&#125;</code>)调用一次</li>
+<li>设置参数之后 (<code>OnParametersSet&#123;Async&#125;</code>)</li>
+<li>组件呈现之后 (<code>OnAfterRender&#123;Async&#125;</code>)</li>
+<li>状态更改 (<code>StateHasChanged</code>)</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">@code &#123;</span><br><span class="line">    <span class="comment">//设置参数时</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> Task <span class="title">SetParametersAsync</span>(<span class="params">ParameterView parameters</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;SetParametersAsync ParameterView=&quot;</span> + parameters);</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> parameters)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;parameters item.Name=&quot;</span> + item.Name + <span class="string">&quot;,item.Value=&quot;</span> + item.Value);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">base</span>.SetParametersAsync(parameters);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//组件初始化</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnInitialized</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;OnInitialized&quot;</span>);</span><br><span class="line">        <span class="keyword">base</span>.OnInitialized();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//组件呈现之后 </span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnAfterRender</span>(<span class="params"><span class="built_in">bool</span> firstRender</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;OnAfterRender firstRender=&quot;</span> + firstRender);</span><br><span class="line">        <span class="keyword">base</span>.OnAfterRender(firstRender);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//设置参数之后</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnParametersSet</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;OnParametersSet&quot;</span>);</span><br><span class="line">        <span class="keyword">base</span>.OnParametersSet();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>葡京</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/2024/01/29/Blazor/">http://example.com/2024/01/29/Blazor/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2024/01/29/program/"></a>
+            
+            
+            <a class="next" rel="next" href="/2024/01/23/Git/">Git</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 葡京 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
